@@ -32,13 +32,18 @@ test:
 
 
 about:
-  home: https://github.com/jmespath/jmespath.py
+  home: http://jmespath.org/
   license: MIT
-  license_family: MIT
   license_file: LICENSE.txt
-  summary: 'JSON Matching Expressions'
+  license_family: MIT
+  summary: Query language for JSON
+  description: |
+    JMESPath allows you to declaratively specify how to extract elements from
+    a JSON document.
+  doc_url: http://jmespath.org/tutorial.html
+  doc_source_url: https://github.com/jmespath/jmespath.py/tree/develop/docs
   dev_url: https://github.com/jmespath/jmespath.py
-  
+
 extra:
   recipe-maintainers:
     - pmlandwehr
