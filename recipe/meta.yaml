@@ -1,5 +1,5 @@
 {% set name = "jmespath" %}
-{% set version = "0.10.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b85d0567b8666149a93172712e68920734333c0ce7e89b78b3e987f71e5ed4f9
+  sha256: 90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe
 
 build:
   number: 0
