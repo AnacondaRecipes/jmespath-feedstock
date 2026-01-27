@@ -1,18 +1,18 @@
 {% set name = "jmespath" %}
-{% set version = "1.0.1" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 472c87d80f36026ae83c6ddd0f1d05d4e510134ed462851fd5f754c8c3cbb88d
 
 build:
   number: 0
   skip: true  # [py<37]
-  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
 
 requirements:
   host:
@@ -20,7 +20,6 @@ requirements:
     - pip
     - setuptools
     - wheel
-
   run:
     - python
 
@@ -31,7 +30,6 @@ test:
     - pip
   commands:
     - pip check
-
 
 about:
   home: https://jmespath.org/
