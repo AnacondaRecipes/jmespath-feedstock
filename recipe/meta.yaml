@@ -6,12 +6,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 472c87d80f36026ae83c6ddd0f1d05d4e510134ed462851fd5f754c8c3cbb88d
+  url: https://github.com/{{ name }}/{{ name }}.py/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 0d602400096d7e6cf89cd52359246696b38ced8fcf992bfbdce9f04981f46864
 
 build:
   number: 0
-  skip: true  # [py<37]
+  skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
 
 requirements:
@@ -24,17 +24,21 @@ requirements:
     - python
 
 test:
+  source_files:
+    - tests
   imports:
     - jmespath
   requires:
     - pip
+    - pytest
   commands:
     - pip check
+    - pytest -vv tests
 
 about:
-  home: https://jmespath.org/
+  home: https://jmespath.org
   license: MIT
-  license_file: LICENSE.txt
+  license_file: LICENSE
   license_family: MIT
   summary: Query language for JSON
   description: |
