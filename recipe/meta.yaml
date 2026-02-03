@@ -1,18 +1,18 @@
 {% set name = "jmespath" %}
-{% set version = "1.0.1" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe
+  url: https://github.com/{{ name }}/{{ name }}.py/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 0d602400096d7e6cf89cd52359246696b38ced8fcf992bfbdce9f04981f46864
 
 build:
   number: 0
-  skip: true  # [py<37]
-  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv"
+  skip: true  # [py<39]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
 
 requirements:
   host:
@@ -20,23 +20,25 @@ requirements:
     - pip
     - setuptools
     - wheel
-
   run:
     - python
 
 test:
+  source_files:
+    - tests
   imports:
     - jmespath
   requires:
     - pip
+    - pytest
   commands:
     - pip check
-
+    - pytest -vv tests
 
 about:
-  home: https://jmespath.org/
+  home: https://jmespath.org
   license: MIT
-  license_file: LICENSE.txt
+  license_file: LICENSE
   license_family: MIT
   summary: Query language for JSON
   description: |
